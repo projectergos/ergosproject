@@ -191,6 +191,7 @@ button {
 }
 
 .nav-social-btn:hover.insta { color: #e1306c; }
+.nav-social-btn:hover.drive { color: #0f9d58; }
 .nav-social-btn:hover.email { color: var(--ergos-bronze); }
 
 .hamburger-btn {
@@ -1008,6 +1009,7 @@ button {
 }
 
 .drawer-social-btn.insta { background-color: #fdf2f8; color: #be185d; }
+.drawer-social-btn.drive { background-color: #ecfdf5; color: #047857; }
 .drawer-social-btn.email { background-color: #f1f5f9; color: #334155; }
 /* Footer */
 .site-footer {
