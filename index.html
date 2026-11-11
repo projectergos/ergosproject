@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ergos Project | Por un legado digno para Industrial</title>
+  
+  <!-- Tipografía Google Fonts Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Hoja de Estilos Autónoma y Completa -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ==================== ENCABEZADO / NAVBAR ==================== -->
+  <header class="site-header">
+    <div class="container-custom nav-wrapper">
+      
+      <!-- Identidad de Marca -->
+      <a href="#" onclick="showSection('inicio'); return false;" class="brand-link">
+        <img src="logo.png" alt="Ergos Project" class="brand-img" onerror="this.onerror=null; this.parentElement.querySelector('.brand-avatar').classList.remove('hidden'); this.classList.add('hidden');">
+        <div class="brand-avatar hidden">E</div>
+        <div>
+          <span class="brand-title block">ERGOS PROJECT</span>
+          <span class="brand-sub block">Por un legado digno para Industrial 👷🏻‍♂️</span>
+        </div>
+      </a>
+
+      <!-- Menú Escritorio -->
+      <nav class="nav-desktop">
+        <button onclick="showSection('inicio')" id="btn-nav-inicio" class="nav-btn active">
+          <i class="fa-solid fa-house" style="margin-right: 0.35rem; font-size: 0.8rem;"></i>Inicio
+        </button>
+        <button onclick="showSection('quienes-somos')" id="btn-nav-quienes" class="nav-btn">
+          <i class="fa-solid fa-users" style="margin-right: 0.35rem; font-size: 0.8rem;"></i>¿Quiénes somos?
+        </button>
+        <button onclick="showSection('servicios')" id="btn-nav-servicios" class="nav-btn">
+          <i class="fa-solid fa-screwdriver-wrench" style="margin-right: 0.35rem; font-size: 0.8rem;"></i>Servicios
+        </button>
+
+        <div class="nav-divider"></div>
+
+        <a href="https://instagram.com/ergosproject" target="_blank" rel="noopener noreferrer" class="nav-social-btn insta" title="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="mailto:projectergos@gmail.com" class="nav-social-btn email" title="Correo">
+          <i class="fa-regular fa-envelope"></i>
+        </a>
+      </nav>
+
+      <!-- Botón Menú Móvil -->
+      <button onclick="toggleMobileMenu(true)" class="hamburger-btn" aria-label="Abrir menú">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- Barra Lateral Móvil (Drawer) -->
+  <div id="drawer-container" class="drawer-container">
+    <div id="drawer-backdrop" onclick="toggleMobileMenu(false)" class="drawer-backdrop"></div>
+    
+    <aside id="mobile-drawer" class="mobile-drawer">
+      <div>
+        <div class="drawer-header">
+          <span class="drawer-header-title">MENÚ</span>
+          <button onclick="toggleMobileMenu(false)" class="drawer-close-btn" aria-label="Cerrar menú">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <nav class="drawer-nav">
+          <button onclick="showSection('inicio'); toggleMobileMenu(false);" id="m-btn-inicio" class="drawer-nav-item active">
+            <span class="flex-item"><i class="fa-solid fa-house"></i>Inicio</span>
+            <i class="fa-solid fa-chevron-right arrow-icon"></i>
+          </button>
+          <button onclick="showSection('quienes-somos'); toggleMobileMenu(false);" id="m-btn-quienes" class="drawer-nav-item">
+            <span class="flex-item"><i class="fa-solid fa-users"></i>¿Quiénes somos?</span>
+            <i class="fa-solid fa-chevron-right arrow-icon"></i>
+          </button>
+          <button onclick="showSection('servicios'); toggleMobileMenu(false);" id="m-btn-servicios" class="drawer-nav-item">
+            <span class="flex-item"><i class="fa-solid fa-screwdriver-wrench"></i>Servicios</span>
+            <i class="fa-solid fa-chevron-right arrow-icon"></i>
+          </button>
+          <button onclick="irAColaboracion(); toggleMobileMenu(false);" class="drawer-nav-item">
+            <span class="flex-item"><i class="fa-solid fa-hand-holding-dollar"></i>Canales de Colaboración</span>
+            <i class="fa-solid fa-arrow-down arrow-icon"></i>
+          </button>
+        </nav>
+      </div>
+
+      <div class="drawer-footer">
+        <a href="https://instagram.com/ergosproject" target="_blank" rel="noopener noreferrer" class="drawer-social-btn insta">
+          <i class="fa-brands fa-instagram"></i>
+          <span>Instagram @ergosproject</span>
+        </a>
+        <a href="mailto:projectergos@gmail.com" class="drawer-social-btn email">
+          <i class="fa-regular fa-envelope"></i>
+          <span>projectergos@gmail.com</span>
+        </a>
+      </div>
+    </aside>
+  </div>
+
+  <!-- ==================== VISTA PRINCIPAL (INICIO) ==================== -->
+  <main id="view-inicio" class="flex-grow">
+    
+    <!-- Hero Principal (Mensaje previo eliminado) -->
+    <section class="container-narrow hero-section">
+      <h1 class="hero-title">
+        Recuperación y optimización de espacios académicos
+      </h1>
+      <p class="hero-desc">
+        Iniciativa de autogestión estudiantil enfocada en renovar la infraestructura, aulas y laboratorios de la Escuela de Ingeniería Industrial.
+      </p>
+      <div>
+        <button onclick="irAColaboracion()" class="btn-primary">
+          <span>Ver canales de colaboración</span>
+          <i class="fa-solid fa-arrow-down" style="font-size: 0.75rem;"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- Estado de Recaudación -->
+    <section class="container-narrow">
+      <div class="recaudacion-card">
+        <h2 class="recaudacion-header">Estado de Recaudación</h2>
+                <div class="recaudacion-grid">
+          <div class="recaudacion-col">
+            <span id="stat-recaudado" class="stat-number emerald stat-animated">198,00€</span>
+            <span class="stat-label">Recaudado</span>
+          </div>
+          <div class="recaudacion-col">
+            <span id="stat-invertido" class="stat-number bronze stat-animated">196,28€</span>
+            <span class="stat-label">Invertido</span>
+          </div>
+          <div class="recaudacion-col">
+            <span id="stat-disponible" class="stat-number dark stat-animated">1,72€</span>
+            <span class="stat-label">Disponible</span>
+          </div>
+        </div>
+        <script>
+          // Inyección inmediata antes del pintado para eliminar cualquier parpadeo
+          (function() {
+            try {
+              var c = JSON.parse(localStorage.getItem('ergos_cifras_cache'));
+              if (c) {
+                if (c.rec) document.getElementById('stat-recaudado').textContent = c.rec;
+                if (c.inv) document.getElementById('stat-invertido').textContent = c.inv;
+                if (c.disp) document.getElementById('stat-disponible').textContent = c.disp;
+              }
+            } catch(e) {}
+          })();
+        </script>
+      </div>
+    </section>
+
+    <!-- Diagnóstico Operativo (Siempre 3 columnas en PC) -->
+    <section class="container-custom">
+      <h2 class="section-title">Diagnóstico Operativo</h2>
+
+      <div class="diag-grid">
+        <!-- Card 1 -->
+        <div class="card-diag">
+          <div>
+            <div class="diag-icon-box diag-icon-blue">
+              <i class="fa-solid fa-cloud-rain"></i>
+            </div>
+            <h3 class="diag-card-title">Impermeabilización</h3>
+            <div>
+              <span class="diag-tag-actual">Estado Actual</span>
+              <p class="diag-text-actual">Filtraciones activas en losas superiores y acumulación de humedad en paredes perimetrales.</p>
+            </div>
+          </div>
+          <div class="diag-footer">
+            <span class="badge-deseado">Estado Deseado</span>
+            <p class="diag-text-deseado">Saneamiento de superficies y aplicación de manto asfáltico sellador de alta durabilidad.</p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card-diag">
+          <div>
+            <div class="diag-icon-box diag-icon-amber">
+              <i class="fa-solid fa-paint-roller"></i>
+            </div>
+            <h3 class="diag-card-title">Mobiliario y Pintura</h3>
+            <div>
+              <span class="diag-tag-actual">Estado Actual</span>
+              <p class="diag-text-actual">Desgaste superficial generalizado en paredes y pupitres con fijaciones desajustadas.</p>
+            </div>
+          </div>
+          <div class="diag-footer">
+            <span class="badge-deseado">Estado Deseado</span>
+            <p class="diag-text-deseado">Restauración integral, fijación estructural y aplicación de pintura.</p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card-diag">
+          <div>
+            <div class="diag-icon-box diag-icon-cyan">
+              <i class="fa-solid fa-snowflake"></i>
+            </div>
+            <h3 class="diag-card-title">Climatización</h3>
+            <div>
+              <span class="diag-tag-actual">Estado Actual</span>
+              <p class="diag-text-actual">Unidades de A/A actualmente inactivas y áreas de estudio sin refrigeración adecuada.</p>
+            </div>
+          </div>
+          <div class="diag-footer">
+            <span class="badge-deseado">Estado Deseado</span>
+            <p class="diag-text-deseado">Mantenimiento preventivo, recarga de refrigerante y reactivación funcional de unidades.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bitácora de Avances (Puntos centrados verticalmente) -->
+    <section class="container-narrow">
+      <h2 class="section-title">Bitácora de Avances</h2>
+
+      <div class="timeline-wrapper">
+        <!-- Hito 1 -->
+        <div class="timeline-node">
+          <div class="timeline-marker emerald"></div>
+          <div class="timeline-card">
+            <span class="timeline-badge emerald">1-2 de Octubre • Completado</span>
+            <h3 class="timeline-title">Operación Apertura</h3>
+            <p class="timeline-desc">
+              Limpieza y Pintura de los Salones SUM y LIO, Sanitarios del Dpto. de Gerencia e instalación de Cortinas y Ventiladores en el salón SUM.
+            </p>
+            <div class="timeline-btn-group">
+              <a href="https://www.instagram.com/reel/DeElWtaNesH/?cplk=aGdlMHh6ejN0Y2Jv" target="_blank" rel="noopener noreferrer" class="btn-pill insta">
+                <i class="fa-brands fa-instagram"></i>
+                <span>Ver resultados</span>
+              </a>
+              <a href="https://drive.google.com/drive/folders/1rj3A_TCtZLZpS7AOn3l8Gz-JKaJvq22A?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-pill drive">
+                <i class="fa-solid fa-folder-open" style="color: #d97706;"></i>
+                <span>Mayor Información</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hito 2 -->
+        <div class="timeline-node">
+          <div class="timeline-marker bronze"></div>
+          <div class="timeline-card">
+            <span class="timeline-badge bronze">En Progreso</span>
+            <h3 class="timeline-title">Operación Humedad (Fase 1)</h3>
+            <p class="timeline-desc">
+              Inspección exhaustiva de los techos para fijar materiales requeridos y su correspondiente cotización.
+            </p>
+          </div>
+        </div>
+
+        <!-- Hito 3 -->
+        <div class="timeline-node">
+          <div class="timeline-marker gray"></div>
+          <div class="timeline-card" style="opacity: 0.92;">
+            <span class="timeline-badge gray">Siguiente Fase</span>
+            <h3 class="timeline-title">Operación Humedad (Fase 2)</h3>
+            <p class="timeline-desc">
+              Recaudación de fondos para la compra de los materiales.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Canales de Colaboración (Información Completa y Estructurada) -->
+    <section id="colaboracion" class="container-narrow scroll-mt-24">
+      <div class="colaboracion-card">
+        <h2 class="colab-main-title">Canales de Colaboración</h2>
+        <p class="colab-main-desc">
+          Toda contribución se destina exclusivamente a la adquisición transparente de insumos y materiales para las aulas y laboratorios.
+        </p>
+
+        <!-- Bloque 1: Pago Móvil -->
+        <div class="colab-method-card">
+          <div class="colab-method-header">
+            <i class="fa-solid fa-mobile-screen-button text-emerald"></i>
+            <div>
+              <h3 class="colab-method-title">Pago Móvil (Bolívares)</h3>
+              <p class="colab-method-sub">Aporte directo para la compra de materiales</p>
+            </div>
+          </div>
+
+          <div class="bank-info-box">
+            <p><strong>Banco:</strong> 0105 - Mercantil</p>
+            <p><strong>C.I.:</strong> V-30.682.297</p>
+            <p><strong>Teléfono:</strong> 0412-8829844</p>
+          </div>
+        </div>
+
+        <!-- Bloque 2: Otros Métodos de Apoyo (Texto según Imagen 3) -->
+        <div class="colab-method-card" style="margin-top: 1.5rem;">
+          <div class="colab-method-header" style="margin-bottom: 1rem;">
+            <i class="fa-solid fa-hand-holding-heart text-amber"></i>
+            <div>
+              <h3 class="colab-method-title" style="font-size: 1.25rem;">Otros Métodos de Apoyo</h3>
+            </div>
+          </div>
+          
+          <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 0.85rem; padding: 1.25rem 1.5rem; margin-bottom: 1.25rem; text-align: left;">
+            <h4 style="font-size: 0.95rem; font-weight: 800; color: #0f172a; margin-bottom: 0.35rem;">¿Deseas aportar por otra vía?</h4>
+            <p style="font-size: 0.875rem; color: #475569; line-height: 1.6;">
+              Para aportes en divisas (efectivo / digital), donaciones de materiales físicos (bombillos, cables, pintura) o herramientas, escríbenos directamente al mensaje directo (DM) de nuestro Instagram.
+            </p>
+          </div>
+
+          <a href="https://instagram.com/ergosproject" target="_blank" rel="noopener noreferrer" class="btn-insta-dm" style="width: 100%; margin-bottom: 0.75rem;">
+            <i class="fa-brands fa-instagram" style="font-size: 1.25rem;"></i>
+            <span>Contactar al DM de Instagram (@ergosproject)</span>
+          </a>
+        </div>
+
+
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== VISTA ¿QUIÉNES SOMOS? ==================== -->
+  <main id="view-quienes-somos" class="flex-grow hidden">
+    <div class="container-narrow content-page">
+      
+      <div class="page-title-box">
+        <h1 class="hero-title">¿Quiénes somos?</h1>
+      </div>
+
+      <div class="content-box">
+        <p class="text-body-lead">
+          <strong style="color: #0f172a;">ERGOS PROJECT</strong> es una asociación de estudiantes sin fines de lucro que hacen vida dentro de la Escuela de Ingeniería Industrial, perteneciente a la Facultad de Ingeniería de la Universidad de Carabobo.
+        </p>
+        <p class="text-body">
+          Dicha iniciativa se considera importante debido a su compromiso de renovar y recuperar las áreas afectadas tras el terremoto del pasado 24 de junio. Como futuros ingenieros, buscamos aplicar nuestros conocimientos, gestión y trabajo en equipo para mejorar la infraestructura y devolver la funcionalidad y bienestar a nuestra cotidianidad. Estamos convencidos de que, con la solidaridad y el esfuerzo colectivo que se logre reunir, transformaremos esta adversidad en un impacto positivo y duradero.
+        </p>
+      </div>
+
+      <div class="section-block">
+        <h2 class="box-title">ORDEN DE PRIORIDADES</h2>
+        <p class="text-body" style="margin-bottom: 2rem;">
+          Con base en nuestro alcance actual, se hace imposible abarcar todas las operaciones al mismo tiempo, en especial las más complejas (que requieren mayor inversión), por lo cual, se decidió priorizar y cumplir primero aquellas más “alcanzables” y de esa forma se espera obtener progresivamente la confianza del colectivo estudiantil de la escuela, para así poder planificar operaciones de mayor relevancia. El mencionado orden consta de tres (3) fases, con las operaciones planteadas hasta el momento:
+        </p>
+
+        <div class="diag-grid">
+          <!-- Fase I -->
+          <div class="card-diag">
+            <div>
+              <span class="badge-phase emerald">Fase I</span>
+              <h3 class="diag-card-title">Higiene y Mantenimiento</h3>
+              <ol class="styled-list">
+                <li><strong>Operación Apertura:</strong> adecuación de superficies en sanitarios de la dirección de gerencia, y en los salones SUM y LIO. También, limpieza de áreas verdes de la EII.</li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- Fase II -->
+          <div class="card-diag">
+            <div>
+              <span class="badge-phase bronze">Fase II</span>
+              <h3 class="diag-card-title">Impermeabilización y Remodelación</h3>
+              <ol class="styled-list">
+                <li><strong>Operación Humedad:</strong> corrección de filtraciones en losa superior y saneamiento de humedad en paredes de aulas de clase.</li>
+                <li><strong>Operación Wireless:</strong> instalación de red WiFi en el pasillo principal de la EII.</li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- Fase III -->
+          <div class="card-diag">
+            <div>
+              <span class="badge-phase gray">Fase III</span>
+              <h3 class="diag-card-title">Recuperación y Transformación</h3>
+              <ol class="styled-list">
+                <li><strong>Operación Lápiz y Papel:</strong> restauración de pupitres y/o mobiliario dentro de las aulas de clase de la EII.</li>
+                <li><strong>Operación Clima:</strong> climatización de los salones de clase con sistemas de aire acondicionado.</li>
+                <li><strong>Operación SIO:</strong> intervención profunda como mecanismo para contribuir a la reactivación de sus funciones de forma regular.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lineamientos -->
+      <div class="content-box">
+        <h2 class="box-title">LINEAMIENTOS</h2>
+        <ol class="styled-list">
+          <li>Ningún proyecto debe involucrar los servicios públicos tales como electricidad o agua. Por tanto, proyectos como la restauración de los baños ubicados al final del pasillo principal, quedan descartados.</li>
+          <li>Para la gestión de los proyectos, lo inicial es realizar un diagnóstico en el área de estudio, luego solicitar (o realizar) una lista de materiales y por último empezar en la recaudación colectiva de fondos.</li>
+          <li>Para la recaudación de los fondos, tener una cuenta bancaria cuyos únicos movimientos sean para los proyectos.</li>
+          <li>Se deben respaldar todos los egresos con su respectiva factura e idealmente en un portal Web y una relación en Microsoft Excel.</li>
+          <li>Para evitar conflictos legales, luego de recaudar los fondos, se deben comprar los insumos, la escuela no va a recibir dinero directamente.</li>
+          <li>Para la entrega de insumos, se debe enviar una carta a la Dirección bajo el concepto de “Donación Estudiantil” (idealmente con nombre y apellido de cada uno de los colaboradores).</li>
+          <li>Inicialmente, están prohibidos los proyectos que planteen un cobro obligatorio a los estudiantes, debe ser netamente voluntario.</li>
+          <li>Se debe contemplar la existencia de 2 tipos de colaboradores: primarios (núcleo de trabajo esencial) y secundarios (aporte únicamente económico). Cabe destacar que, de los colaboradores secundarios se aceptan sugerencias más no imposiciones.</li>
+          <li>Para la entrega de proyectos terminados, se prevé una convocatoria pública con autoridades de la escuela, que transmita confianza a los colaboradores.</li>
+          <li>Garantizar transparencia en todo momento, tanto en el manejo de recursos como en la aplicación efectiva de los proyectos.</li>
+        </ol>
+      </div>
+
+      <!-- Aspectos a Considerar -->
+      <div class="content-box">
+        <h2 class="box-title">ASPECTOS A CONSIDERAR</h2>
+        <ol class="styled-list">
+          <li><strong>ERGOS PROJECT</strong> es estrictamente una organización de estudiantes sin fines de lucro y sin fines políticos, que no tiene por objetivo ni formar, ni sustituir el centro de estudiantes dentro de la Escuela de Ingeniería Industrial.</li>
+          <li>Para evitar conflictos legales, aclarar desde un primer momento que es una iniciativa de estudiantes, que cuenta con apoyo docente pero, no hace mención al colectivo docente en lo que se refiere a recaudaciones.</li>
+          <li>Para realizar el enlace de los colaboradores primarios con los secundarios, idealmente se buscarán estudiantes que en representación de los semestres pertenecientes a la escuela, se encarguen de transmitir la idea y la confianza a los demás colaboradores, como estrategia para maximizar las donaciones.</li>
+          <li>Dentro de la organización de los equipos de trabajo, se debe contemplar la división de los integrantes en subgrupos para determinadas funciones, que permita al subgrupo desarrollar sus tareas de forma independiente pero de forma articulada respecto al resto del equipo.</li>
+          <li>Para la formación de los subgrupos (o departamentos), se prevé dividir las obligaciones en: Logística, Finanzas y Relaciones Públicas, entre otros.</li>
+          <li>A pesar de que las tareas sean por grupos, no implica que no pueda existir la colaboración de una persona en más de un grupo, siempre que eso no impida el desarrollo de las ocupaciones.</li>
+          <li>No existe un límite de necesidades que se deba cubrir, eso lo marca la cantidad de apoyo que tenga la iniciativa.</li>
+          <li>El equipo de trabajo requiere de coordinación con un docente guía, designado por la escuela de ingeniería industrial y adjunto a la misma, cuya función es orientar y aprobar las actividades a realizar de acuerdo con los lineamientos anteriormente establecidos.</li>
+          <li>Aparte de la restauración de los espacios maltratados como mantenimiento correctivo, también sería productivo realizar ponencias dentro de la escuela que sirvan de mantenimiento preventivo, y de esa forma llamar a la conciencia colectiva respecto de los espacios restaurados.</li>
+          <li>Para las operaciones de climatización, se deben tomar en cuenta también los gastos inherentes al artefacto que se requiera instalar (uno de ellos es, por ejemplo: la mano de obra).</li>
+          <li>En caso de requerir jornadas o tareas extra de operadores públicos y se deba cancelar una tarifa por día, será financiada con los fondos recaudados.</li>
+          <li>Dentro de las recaudaciones pertinentes, no se prevé involucrar la compra de insumos de limpieza.</li>
+          <li>Documentar cada uno de los proyectos de la campaña, para dejar constancia de la hoja de ruta que se viene siguiendo.</li>
+          <li>Contemplar la dinámica con egresados como método paralelo de recaudación de fondos.</li>
+          <li>A pesar de que también hay salones pertenecientes a la escuela fuera del núcleo principal de la misma, al no poder asegurar la integridad de los proyectos a largo plazo, no se contempla la intervención en esos espacios (ejemplo: salón A8I, Salón SEIN).</li>
+          <li>Idealmente no se debería trabajar en varios proyectos a la vez, la idea es enfocar los esfuerzos en un único proyecto para poder entregar lo más rápido posible.</li>
+          <li>Considerar la dinámica con empresas como mecanismo de apoyo en el desarrollo de los proyectos.</li>
+          <li>El número de operaciones por fase podría variar según la planificación.</li>
+          <li>El avance de fase es simplemente un cambio de enfoque dentro de las operaciones pero, no implica la exclusión de actividades referidas a etapas anteriores. En otras palabras, es ampliar la cantidad de actividades a realizar en los espacios.</li>
+        </ol>
+      </div>
+
+      <div style="text-align: center; margin-top: 3rem;">
+        <button onclick="showSection('inicio')" class="btn-primary">
+          ← Volver a la página principal
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+      <!-- ==================== VISTA SERVICIOS ==================== -->
+  <main id="view-servicios" class="flex-grow hidden">
+    <div class="container-narrow content-page">
+      
+      <div class="page-title-box">
+        <h1 class="hero-title">CATÁLOGO DE SERVICIOS</h1>
+      </div>
+
+      <!-- Catálogo de Servicios en Cards -->
+      <div class="section-block">
+        <div class="diag-grid">
+          <!-- Servicio 1: Microondas -->
+          <div class="card-diag">
+            <div>
+              <span class="badge-phase emerald">Servicio Inmediato</span>
+              <h3 class="diag-card-title">Servicio de Microondas</h3>
+              <p class="diag-text-actual">
+                Disponibilidad de equipos térmicos para acondicionar y disfrutar de la comida a temperatura aceptable dentro de las instalaciones.
+              </p>
+            </div>
+            <div class="diag-footer" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+              <span class="badge-deseado">Tarifa del Servicio</span>
+              <p class="diag-text-deseado">50 Bs.</p>
+            </div>
+          </div>
+
+          <!-- Servicio 2: Lockers -->
+          <div class="card-diag">
+            <div>
+              <span class="badge-phase bronze">Por Semestre</span>
+              <h3 class="diag-card-title">Servicio de Lockers</h3>
+              <p class="diag-text-actual">
+                Casilleros privados diseñados para el resguardo temporal de pertenencias personales en compartimentos individuales seguros.
+              </p>
+            </div>
+            <div class="diag-footer" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+              <span class="badge-deseado">Tarifa del Servicio</span>
+              <p class="diag-text-deseado">4$ por semestre</p>
+            </div>
+          </div>
+
+          <!-- Servicio 3: AMB -->
+          <div class="card-diag">
+            <div>
+              <span class="badge-phase gray">Aporte Voluntario</span>
+              <h3 class="diag-card-title">Aporte Mensual para el Bienestar (AMB)</h3>
+              <p class="diag-text-actual">
+                Iniciativa estrictamente voluntaria para contribuir económicamente de forma periódica, mejorar las condiciones generales de la escuela y agilizar las operaciones de recuperación de espacios mediante voceros por semestre.
+              </p>
+            </div>
+            <div class="diag-footer" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+              <span class="badge-deseado">Inversión Necesaria</span>
+              <p class="diag-text-deseado">5$ mensuales</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Aspectos a considerar sobre el servicio de lockers -->
+      <div class="content-box">
+        <h2 class="box-title">ASPECTOS A CONSIDERAR SOBRE EL SERVICIO DE LOCKERS</h2>
+        <ol class="styled-list">
+          <li>El aspirante debe ser estudiante activo de ingeniería industrial, con al menos dos (2) unidades curriculares adjuntas a alguno de los tres (3) departamentos que conforman la escuela.</li>
+          <li>La adjudicación del locker se realizará dentro de las primeras tres (3) semanas de cada semestre, de ser usuario regular se consultará por su continuidad, si es aspirante deberá esperar por la disponibilidad.</li>
+          <li>Los usuarios regulares poseen prioridad sobre los aspirantes, como estrategia de premiación a la fidelidad brindada por el usuario ante el servicio prestado.</li>
+          <li>El proceso de adjudicación del locker consta de la cancelación de la tarifa, el registro de los datos personales y su posterior asignación.</li>
+          <li>El usuario es libre de elegir la herramienta de seguridad de su preferencia, siempre que no intervenga sobre los demás usuarios.</li>
+          <li>El pago debe hacerse a la tasa oficial del día hábil más reciente hasta la fecha.</li>
+          <li>Para el registro de datos personales, el aspirante debe tener a la mano: cédula de identidad laminada y solicitud de inscripción del semestre en curso.</li>
+          <li>En caso de ser usuarios regulares, disponen de las primeras dos (2) semanas del semestre para cancelar la tarifa y de esa forma, mantener el servicio. En caso contrario, se dispondrá de la semana restante para adjudicar el mismo a la población de aspirantes, según corresponda.</li>
+          <li>El acceso al espacio de los lockers está limitado, y se hará obligatoriamente con algún integrante de Ergos Project y/o delegado de la dirección de la escuela, de lunes a viernes entre las 8:00AM y las 3:00PM sin excepción, para así contribuir al orden y la seguridad de las pertenencias.</li>
+          <li>Cuando resten 2 semanas de semestre (sin contar semana de recuperativos y transcripción de notas), se contactará a todos los usuarios para que, de manera oportuna, retiren sus pertenencias de los espacios, ya que en el periodo vacacional es imposible garantizar la integridad de las mismas.</li>
+          <li>En caso de incumplir con el tiempo de retiro de pertenencias, el usuario se somete a medidas disciplinarias.</li>
+          <li>Queda terminantemente prohibido el acceso de terceros a los lockers asignados, salvo excepción escrita y firmada por el usuario titular (solo en casos de urgencia).</li>
+          <li>Queda terminantemente prohibido utilizar el espacio asignado para resguardar armas blancas y/o de fuego, bebidas alcohólicas, sustancias ilícitas, entre otros.</li>
+          <li>Ergos Project no se hace responsable por la pérdida, robo o hurto de pertenencias.</li>
+        </ol>
+      </div>
+
+      <!-- Aspectos a considerar para realizar el AMB -->
+      <div class="content-box">
+        <h2 class="box-title">ASPECTOS A CONSIDERAR PARA REALIZAR EL AMB</h2>
+        <ol class="styled-list">
+          <li>Ser estudiante activo de ingeniería industrial, con al menos dos (2) unidades curriculares adjuntas a alguno de los tres (3) departamentos que conforman la escuela.</li>
+          <li>Preferiblemente, contactar al vocero correspondiente por semestre, para no saturar a los demás voceros.</li>
+          <li>El pago debe hacerse a la tasa oficial del día hábil más reciente disponible hasta la fecha.</li>
+          <li>El pago debe adjuntarse con comprobante, nombre, apellido y semestre al vocero para conciliarse.</li>
+          <li>A menos que se indique lo contrario, la única cuenta bancaria designada para recepción del mismo es la del proyecto, es decir, los miembros del equipo y los voceros no serán intermediarios de los fondos mediante sus cuentas personales. Por lo tanto, Ergos Project no se hace responsable por pagos realizados a cuentas bancarias equivocadas.</li>
+        </ol>
+      </div>
+
+      <!-- Beneficios del AMB -->
+      <div class="content-box">
+        <h2 class="box-title">BENEFICIOS DEL AMB</h2>
+        <ol class="styled-list">
+          <li>Adquisición de productos de limpieza y demás implementos relacionados al mantenimiento de las áreas comunes.</li>
+          <li>Dotación periódica de insumos de higiene en los sanitarios de la dirección de la escuela.</li>
+          <li>Contribución minoritaria con operaciones a realizar en el futuro, para la recuperación y acondicionamiento de los espacios maltratados.</li>
+        </ol>
+        <div style="margin-top: 1.5rem; padding: 1rem 1.25rem; background-color: #fffbeb; border: 1px solid #fef3c7; border-radius: 12px;">
+          <p style="font-size: 0.85rem; color: #92400e; line-height: 1.5;">
+            <strong>IMPORTANTE:</strong> La iniciativa anteriormente descrita es planteada, ofrecida y ejecutada únicamente por el equipo de Ergos Project; la Dirección de la Escuela de Ingeniería Industrial no está involucrada en la recepción ni administración de fondos.
+          </p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 3rem;">
+        <button onclick="showSection('inicio')" class="btn-primary">
+          ← Volver a la página principal
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <p>Ergos Project © 2026 • Escuela de Ingeniería Industrial</p>
+  </footer>
+
+  <!-- Script JS -->
+  <script src="js/app.js"></script>
+</body>
+</html>
